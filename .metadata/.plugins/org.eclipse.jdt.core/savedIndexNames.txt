@@ -1,0 +1,5 @@
+INDEX VERSION 1.131+C:\test\hometudy\.metadata\.plugins\org.eclipse.jdt.core
+4267160747.index
+783925646.index
+2772001610.index
+4028383864.index

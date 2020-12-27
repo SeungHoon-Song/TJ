@@ -1,0 +1,34 @@
+package sec02.exam02_application_lifecycle;
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class AppMain extends Application{
+	
+	public AppMain() {
+		System.out.println(Thread.currentThread().getName()+":AppMain() 호출"); //ui생성코드는JavaFX Application Thread에서 
+	}
+	
+	@Override
+	public void init() throws Exception {
+		System.out.println(Thread.currentThread().getName()+":init() 호출");	//ui생성코드 X
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		System.out.println(Thread.currentThread().getName()+":start() 호출");		//일반적으로 재정의
+		primaryStage.show();	//윈도우 보여주기
+		
+	}
+	
+	@Override
+	public void stop() throws Exception {
+		System.out.println(Thread.currentThread().getName()+":stop() 호출");
+	}
+	
+	public static void main(String[] args) {
+		launch(args);	//AppMain 객체 생성 및 메인 윈도우 생성
+
+	}
+
+}
