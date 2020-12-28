@@ -45,7 +45,7 @@ public class ClientBackground {
 
 	public void sendMessage(String msg2) {
 		try {
-			out.writeUTF("클라이언트 : "+msg2);
+			out.writeUTF(msg2);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

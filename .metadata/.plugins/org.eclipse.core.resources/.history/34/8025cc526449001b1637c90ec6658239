@@ -42,14 +42,5 @@ public class ClientBackground {
 		ClientBackground clientBackground = new ClientBackground();
 		clientBackground.connect();
 	}
-
-	public void sendMessage(String msg2) {
-		try {
-			out.writeUTF("클라이언트 : "+msg2);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
 	
 }

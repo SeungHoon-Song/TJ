@@ -52,7 +52,7 @@ public class ServerBackground {
 
 	public void sendMessage(String msg) {
 		try {
-			out.writeUTF("서버 : "+msg);
+			out.writeUTF(msg);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

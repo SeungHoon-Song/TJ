@@ -1,4 +1,4 @@
-package chat.client;
+package chat.server;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -8,14 +8,16 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import chat.server.ServerGui;
+public class ServerGui extends JFrame implements ActionListener{
+	
+	private JTextArea jta = new JTextArea(40,25);	//여러 줄 문자열 입력 창
+	private JTextField jtf = new JTextField(25);	//한 줄 문자열 입력받는 창
+	
+	//연동
+	private ServerBackground server = new ServerBackground();
+	
 
-public class ClientGui extends JFrame implements ActionListener{
-	private JTextArea jta = new JTextArea(40,25);
-	private JTextField jtf = new JTextField(25);
-	private ClientBackground client = new ClientBackground();
-
-	public ClientGui() {
+	public ServerGui() {
 		
 		add(jta, BorderLayout.CENTER);
 		add(jtf, BorderLayout.SOUTH);
@@ -23,33 +25,31 @@ public class ClientGui extends JFrame implements ActionListener{
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
-		setBounds(800,100,400,600);
-		setTitle("클라이언트 부분");
+		setBounds(200,100,400,600);	//창 나올 위치 좌표 (x,y위치들,x,y 크기)
+		setTitle("서버 부분");
 		
-		client.setGui(this);
-		client.connect();
+		server.setGui(this);
+		server.setting();
 		
 	}
 	
 	public static void main(String[] args) {
-		new ClientGui(); 
+		new ServerGui(); 
 	}
-	
 	@Override
-	//말치면 보내지는 부분
 	public void actionPerformed(ActionEvent e) {
 		String msg = jtf.getText()+"\n";
-		jta.append("클라이언트 : "+msg);
+		jta.append(msg);
 		System.out.print(jtf);
-		client.sendMessage(msg);
-		
-		
+
 		jtf.setText("");	//채팅 입력창 시작 공백 
 		
 	}
 
 	public void appendMsg(String msg) {
 		jta.append(msg);
+		System.out.print("날아온 메시지 : "+jtf);
 		
 	}
+	
 }

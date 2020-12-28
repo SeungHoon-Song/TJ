@@ -36,20 +36,12 @@ public class ClientGui extends JFrame implements ActionListener{
 	}
 	
 	@Override
-	//말치면 보내지는 부분
 	public void actionPerformed(ActionEvent e) {
 		String msg = jtf.getText()+"\n";
-		jta.append("클라이언트 : "+msg);
+		jta.append(msg);
 		System.out.print(jtf);
-		client.sendMessage(msg);
-		
 		
 		jtf.setText("");	//채팅 입력창 시작 공백 
-		
-	}
-
-	public void appendMsg(String msg) {
-		jta.append(msg);
 		
 	}
 }

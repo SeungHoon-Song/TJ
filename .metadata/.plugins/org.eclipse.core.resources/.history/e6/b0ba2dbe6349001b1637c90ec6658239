@@ -13,7 +13,6 @@ public class ServerBackground {
 	private DataInputStream in;
 	private DataOutputStream out;
 	private ServerGui gui;
-	private String msg;
 	
 	
 	public void setGui(ServerGui gui) {
@@ -30,14 +29,9 @@ public class ServerBackground {
 			out = new DataOutputStream(socket.getOutputStream());
 			in = new DataInputStream(socket.getInputStream());
 			
-			msg = in.readUTF();
+			String msg = in.readUTF();
 			System.out.println("클라이언트로부터의 메시지 : "+msg);
 			gui.appendMsg(msg);
-			
-			while(in!=null) {
-				msg=in.readUTF();
-				gui.appendMsg(msg);
-			}
 			
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -47,15 +41,6 @@ public class ServerBackground {
 	public static void main(String[] args) {
 		ServerBackground serverBackground = new ServerBackground();
 		serverBackground.setting();
-		
-	}
-
-	public void sendMessage(String msg) {
-		try {
-			out.writeUTF("서버 : "+msg);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 		
 	}
 	

@@ -11,7 +11,6 @@ public class ClientBackground {
 	private DataInputStream in;
 	private DataOutputStream out;
 	private ClientGui gui;
-	private String msg;
 	
 	public void setGui(ClientGui gui) {
 		this.gui = gui;
@@ -28,11 +27,6 @@ public class ClientBackground {
 			out.writeUTF("Hi, I'm Client");
 			System.out.println("클라이언트의 메시지 전송완료");	//서버에서 뜸
 			
-			while(in!=null) {
-				msg=in.readUTF();
-				gui.appendMsg(msg);
-			}
-			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -41,15 +35,6 @@ public class ClientBackground {
 	public static void main(String[] args) {
 		ClientBackground clientBackground = new ClientBackground();
 		clientBackground.connect();
-	}
-
-	public void sendMessage(String msg2) {
-		try {
-			out.writeUTF("클라이언트 : "+msg2);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
 	}
 	
 }

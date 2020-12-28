@@ -39,7 +39,7 @@ public class ServerGui extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String msg = jtf.getText()+"\n";
-		jta.append("서버 : "+msg);
+		jta.append(msg);
 		System.out.print(msg);
 		
 		server.sendMessage(msg);
