@@ -12,6 +12,7 @@ public class ClientBackground {
 	private DataOutputStream out;
 	private ClientGui gui;
 	private String msg;
+	private String nickName;
 	
 	public void setGui(ClientGui gui) {
 		this.gui = gui;
@@ -25,8 +26,8 @@ public class ClientBackground {
 			out = new DataOutputStream(socket.getOutputStream());
 			in = new DataInputStream(socket.getInputStream());
 			
-			out.writeUTF("Hi, I'm Client");
-			System.out.println("클라이언트의 메시지 전송완료");	//서버에서 뜸
+			out.writeUTF(nickName);	//접속하자마자 닉네임 전송, 서버가 인식후 맵에 넣음
+			System.out.println("클라이언트: 메시지 전송완료");	//서버에서 뜸
 			
 			while(in!=null) {
 				msg=in.readUTF();
@@ -45,10 +46,15 @@ public class ClientBackground {
 
 	public void sendMessage(String msg2) {
 		try {
-			out.writeUTF("클라이언트 : "+msg2);
+			out.writeUTF(msg2);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+	}
+
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 		
 	}
 	
