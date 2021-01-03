@@ -49,12 +49,10 @@ public class ServerBackground {
 	
 	//맵의 내용(클라이언트) 저장,삭제 
 	public void addClient(String nick, DataOutputStream out) {
-		sendMessage(nick+"님 접속!");
 		clientsMap.put(nick, out);
 
 	}
 	public void removeClient(String nick){
-		sendMessage(nick+"님 종료!");
 		clientsMap.remove(nick);
 	}
 	//메세지 내용 전달

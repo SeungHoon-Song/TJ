@@ -6,14 +6,30 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
+		<item key="selection" value="dos"/>
 		<list key="findhistory">
+			<item value="dos"/>
+			<item value="dis"/>
+			<item value="receiveMessage"/>
+			<item value="connectServer"/>
+			<item value="connectResult"/>
+			<item value="receive"/>
+			<item value="receiveMessage\"/>
+			<item value="stopSignal"/>
+			<item value="connect"/>
+			<item value="connect\"/>
+			<item value="prepare"/>
+			<item value="패스"/>
+			<item value="pass"/>
+			<item value="패스워드"/>
+			<item value="startService"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="346"/>
-		<item key="DIALOG_Y_ORIGIN" value="263"/>
+		<item key="DIALOG_X_ORIGIN" value="1192"/>
+		<item key="DIALOG_Y_ORIGIN" value="41"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

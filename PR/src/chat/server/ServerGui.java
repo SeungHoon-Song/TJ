@@ -39,6 +39,7 @@ public class ServerGui extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		String msg = "서버:"+jtf.getText()+"\n";
+		System.out.println(msg);
 		server.sendMessage(msg);
 		jtf.setText("");	//채팅 입력창 시작 공백 
 		
