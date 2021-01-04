@@ -6,8 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="dos"/>
+		<item key="selection" value="sendMessage"/>
 		<list key="findhistory">
+			<item value="sendMessage"/>
+			<item value="thread"/>
+			<item value="connectStatus"/>
+			<item value="pane"/>
 			<item value="dos"/>
 			<item value="dis"/>
 			<item value="receiveMessage"/>
@@ -19,10 +23,6 @@
 			<item value="connect"/>
 			<item value="connect\"/>
 			<item value="prepare"/>
-			<item value="패스"/>
-			<item value="pass"/>
-			<item value="패스워드"/>
-			<item value="startService"/>
 		</list>
 		<list key="replacehistory">
 		</list>

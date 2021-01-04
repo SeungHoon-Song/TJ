@@ -15,8 +15,10 @@ import java.net.UnknownHostException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
  
@@ -72,14 +74,6 @@ public class SimpleChatClient extends JFrame {
  
         textField.addActionListener(new ActionListener() {
  
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sendMessage();
-            }
-        });
-        
-        btnInput.addActionListener(new ActionListener() {
-        	 
             @Override
             public void actionPerformed(ActionEvent e) {
                 sendMessage();
@@ -181,7 +175,6 @@ public class SimpleChatClient extends JFrame {
     public void sendMessage() {
         try {
             String text = textField.getText();
-            if(!text.equals(""))
             textArea.append("손님:"+text + "\n");
             
             //입력된 메세지가 "/exit" 일 경우
@@ -197,7 +190,6 @@ public class SimpleChatClient extends JFrame {
             }else {
                 //입력된 메세지가 "/exit"가 아닐 경우( 전송할 메세지인 경우)
                 //클라이언트에게 메세지 전송
-            	if(!text.equals(""))
                 dos.writeUTF(text);
                 
                 //초기화 및 커서요청

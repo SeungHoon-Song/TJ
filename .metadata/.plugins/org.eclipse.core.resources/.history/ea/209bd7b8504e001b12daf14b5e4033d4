@@ -181,7 +181,7 @@ public class SimpleChatClient extends JFrame {
     public void sendMessage() {
         try {
             String text = textField.getText();
-            if(!text.equals(""))
+            
             textArea.append("손님:"+text + "\n");
             
             //입력된 메세지가 "/exit" 일 경우

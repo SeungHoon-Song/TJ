@@ -157,6 +157,7 @@ public class SimpleChatClient extends JFrame {
         try {
             while(!stopSignal) {
                 //클라이언트가 writeUTF() 메서드로 전송한 메세지를 입력받기
+            	if(!dis.readUTF().equals(""))
                 textArea.append("관리자 : "+dis.readUTF()+"\n");
             }
             //stopSignal 이 true 가 되면 메세지 수신 종료되므로 dis와 socket 반환
@@ -197,7 +198,6 @@ public class SimpleChatClient extends JFrame {
             }else {
                 //입력된 메세지가 "/exit"가 아닐 경우( 전송할 메세지인 경우)
                 //클라이언트에게 메세지 전송
-            	if(!text.equals(""))
                 dos.writeUTF(text);
                 
                 //초기화 및 커서요청

@@ -17,7 +17,6 @@ import java.net.SocketException;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.JScrollPane;
  
 public class SimpleChatServer extends JFrame {
@@ -71,6 +70,14 @@ public class SimpleChatServer extends JFrame {
         scrollPane.setViewportView(textArea);
  
         textField.addActionListener(new ActionListener() {
+ 
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sendMessage();
+            }
+        });
+        
+        btnInput.addActionListener(new ActionListener() {
  
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -168,6 +175,7 @@ public class SimpleChatServer extends JFrame {
     public void sendMessage() {
         try {
             String text = textField.getText();
+            if(!text.equals(""))
             textArea.append("관리자:"+text + "\n");
             
             //입력된 메세지가 "/exit" 일 경우
@@ -183,6 +191,7 @@ public class SimpleChatServer extends JFrame {
             }else {
                 //입력된 메세지가 "/exit"가 아닐 경우( 전송할 메세지인 경우)
                 //클라이언트에게 메세지 전송
+            	if(!text.equals(""))
                 dos.writeUTF(text);
                 
                 //초기화 및 커서요청

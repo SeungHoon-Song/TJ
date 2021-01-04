@@ -1,5 +1,8 @@
 package chat1on1;
 
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,23 +10,20 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
-import java.io.OutputStream;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
-import java.net.UnknownHostException;
  
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
  
-public class SimpleChatClient extends JFrame {
+public class SimpleChatServer extends JFrame {
     private JTextField textField;
     JTextArea textArea;
     JLabel lblStatus;
+    private ServerSocket serverSocket;
     private Socket socket;
  
     private DataInputStream dis;
@@ -31,16 +31,16 @@ public class SimpleChatClient extends JFrame {
  
     private boolean connectStatus;// 클라이언트 접속 여부 저장
     private boolean stopSignal;// 쓰레드 종료 신호 저장
- 
-    public SimpleChatClient() {
+  
+    public SimpleChatServer() {
         showFrame();
-        
+        startService();// 채팅 서버 시작
     }
  
     public void showFrame() {
-        setTitle("1:1 채팅 클라이언트");
+        setTitle("1:1 채팅 서버");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(1200, 400, 500, 300);
+        setBounds(400, 400, 500, 300);
         getContentPane().setLayout(null);
  
         textArea = new JTextArea();
@@ -59,16 +59,15 @@ public class SimpleChatClient extends JFrame {
         JPanel panel = new JPanel();
         panel.setBounds(0, 0, 484, 22);
         getContentPane().add(panel);
+ 
+        lblStatus = new JLabel("클라이언트 연결 상태 : 연결없음");
+        lblStatus.setForeground(Color.RED);
+        panel.add(lblStatus);
         
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(0, 23, 484, 208);
         getContentPane().add(scrollPane);
         scrollPane.setViewportView(textArea);
-        
- 
-        lblStatus = new JLabel("서버 연결 상태 : 미연결");
-        lblStatus.setForeground(Color.RED);
-        panel.add(lblStatus);
  
         textField.addActionListener(new ActionListener() {
  
@@ -77,77 +76,63 @@ public class SimpleChatClient extends JFrame {
                 sendMessage();
             }
         });
-        
-        btnInput.addActionListener(new ActionListener() {
-        	 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sendMessage();
-            }
-        });
  
         setVisible(true);
-        startService();
  
-        
-        
-        textArea.requestFocus();// 텍스트필드에 커서요청
+        textField.requestFocus();
  
     }
+ 
     public void startService() {
-//        서버접속시도
-        
-        //멀티쓰레딩 구현하여 receiveMessage() 메서드 호출
-    	connectServer();
-    	
-        new Thread(new Runnable() {
-            
-            @Override
-            public void run() {
-                receiveMessage();
-            }
-        }).start();
-        
-        
-    }
-    
- 
-   
- 
-    public boolean connectServer() {
- 
         try {
-            textArea.append("서버에 접속을 시도 중입니다....\n");
+            textArea.append("채팅 서비스 준비중..\n");
  
-            // socket 객체를 생성하여 IP 주소와 포트번호 전달->서버 접속시도
-            socket = new Socket("localhost", 59876);
+            // ServerSocket 객체를 생성하여 지정된 포트(59876)를 개방
+            serverSocket = new ServerSocket(59876);
+            textArea.append("서비스 준비 완료\n");
  
-            // DataOutputStream 객체 생성 후 입력되는 패스워드 넘겨주기
+            // 클라이언트로부터 접속이 성공할 때까지 접속 무한 대기
+            connectStatus = false;
+            while (!connectStatus) {
+                textArea.append("클라이언트 접속 대기중...\n");
+                // ServerSocket 객체의 accept()메서드를 호출하여 연결대기
+                // 연결 완료 시 Socket 객체 리턴됨
+                socket = serverSocket.accept();
+                // 접속된 클라이언트에 대한 IP 주소 정보 출력
+                textArea.append("클라이언트가 접속 하였습니다. (" + socket.getInetAddress() + ")\n");
  
-            dos = new DataOutputStream(socket.getOutputStream());
-           
+                // DataInputStream 객체 생성 후 입력되는 패스워드 가져와서 출력
  
-            textArea.append("서버 접속 완료\n");
+                dis = new DataInputStream(socket.getInputStream());
+
  
+                // DataOutStream 객체 생성
+ 
+                dos = new DataOutputStream(socket.getOutputStream());
+ 
+               
+              
+                    connectStatus=true;
+                    lblStatus.setText("클라이언트 연결 상태 : 연결됨");
+                    
+                
+            }
             
+            //Runnable 인터페이스를 구현하여 Thread 객체에 전달 후 start() 메서드 호출
+            //바로 쓰레드 실행까지 처리됨
+            new Thread(new Runnable() {
+                
+                @Override
+                public void run() {
+                    //클라이언트로부터 전송되는 메세지를 처리할 receiveMessage() 메서드 호출
+                    receiveMessage();
+                }
+            }).start();
  
-            // DataInputStream 객체 생성 후 전달받은 접속요청 결과 출력
-            dis = new DataInputStream(socket.getInputStream());
-            
-            
-           
-              lblStatus.setText("서버 연결 상태 : 연결됨\n");
-              connectStatus=true;
-          
-            
- 
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        return true;
+ 
     }
     
     public void receiveMessage() {
@@ -157,15 +142,15 @@ public class SimpleChatClient extends JFrame {
         try {
             while(!stopSignal) {
                 //클라이언트가 writeUTF() 메서드로 전송한 메세지를 입력받기
-                textArea.append("관리자 : "+dis.readUTF()+"\n");
+                textArea.append("손님:"+dis.readUTF()+"\n");
             }
             //stopSignal 이 true 가 되면 메세지 수신 종료되므로 dis와 socket 반환
             dis.close();
             socket.close();
         }catch(EOFException e){
             //상대방이 접속 해제할 경우 소켓이 제거되면서 호출되는 예외
-            textArea.append("서버 접속이 해제되었습니다.\n");
-            lblStatus.setText("서버 연결 상태 : 미연결");
+            textArea.append("클라이언트 접속이 해제되었습니다.\n");
+            lblStatus.setText("클라이언트 연결 상태 : 미연결");
             connectStatus=false;
         }catch(SocketException e) {
             textArea.append("서버 접속이 해제되었습니다.\n");
@@ -177,12 +162,12 @@ public class SimpleChatClient extends JFrame {
         
         
     }
+    
  
     public void sendMessage() {
         try {
             String text = textField.getText();
-            if(!text.equals(""))
-            textArea.append("손님:"+text + "\n");
+            textArea.append("관리자:"+text + "\n");
             
             //입력된 메세지가 "/exit" 일 경우
             if(text.equals("/exit")) {
@@ -197,7 +182,6 @@ public class SimpleChatClient extends JFrame {
             }else {
                 //입력된 메세지가 "/exit"가 아닐 경우( 전송할 메세지인 경우)
                 //클라이언트에게 메세지 전송
-            	if(!text.equals(""))
                 dos.writeUTF(text);
                 
                 //초기화 및 커서요청
@@ -212,6 +196,6 @@ public class SimpleChatClient extends JFrame {
     }
  
     public static void main(String[] args) {
-        new SimpleChatClient();
+        new SimpleChatServer();
     }
 }
