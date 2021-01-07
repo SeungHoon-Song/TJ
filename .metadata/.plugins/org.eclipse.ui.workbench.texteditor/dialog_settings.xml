@@ -6,30 +6,30 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="sendMessage"/>
+		<item key="selection" value="read"/>
 		<list key="findhistory">
+			<item value="read"/>
+			<item value="while"/>
+			<item value="socket.close"/>
+			<item value="getInetAddress"/>
+			<item value="getInetADdress"/>
+			<item value="getLocal"/>
+			<item value="net"/>
 			<item value="sendMessage"/>
-			<item value="thread"/>
-			<item value="connectStatus"/>
-			<item value="pane"/>
-			<item value="dos"/>
-			<item value="dis"/>
-			<item value="receiveMessage"/>
-			<item value="connectServer"/>
-			<item value="connectResult"/>
-			<item value="receive"/>
-			<item value="receiveMessage\"/>
-			<item value="stopSignal"/>
-			<item value="connect"/>
-			<item value="connect\"/>
-			<item value="prepare"/>
+			<item value="if (!text.equals(&quot;&quot;))"/>
+			<item value="if (!msg.equals(&quot;&quot;))"/>
+			<item value="ServerThread"/>
+			<item value="setvisible"/>
+			<item value="EXIT_ON_CLOSE"/>
+			<item value="addWindowListener"/>
+			<item value="message"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1192"/>
-		<item key="DIALOG_Y_ORIGIN" value="41"/>
+		<item key="DIALOG_X_ORIGIN" value="895"/>
+		<item key="DIALOG_Y_ORIGIN" value="456"/>
 		<item key="DIALOG_WIDTH" value="288"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

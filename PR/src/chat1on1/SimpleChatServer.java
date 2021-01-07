@@ -33,12 +33,7 @@ public class SimpleChatServer extends JFrame {
     private boolean stopSignal;// 쓰레드 종료 신호 저장
   
     public SimpleChatServer() {
-        showFrame();
-        startService();// 채팅 서버 시작
-    }
- 
-    public void showFrame() {
-        setTitle("1:1 채팅 서버");
+    	setTitle("1:1 채팅 서버");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(400, 400, 500, 300);
         getContentPane().setLayout(null);
@@ -69,6 +64,7 @@ public class SimpleChatServer extends JFrame {
         getContentPane().add(scrollPane);
         scrollPane.setViewportView(textArea);
  
+        //텍스트필드 엔터시 메세지 전송
         textField.addActionListener(new ActionListener() {
  
             @Override
@@ -77,6 +73,7 @@ public class SimpleChatServer extends JFrame {
             }
         });
         
+        //입력 버튼 클릭시 메세지 전송
         btnInput.addActionListener(new ActionListener() {
  
             @Override
@@ -86,9 +83,10 @@ public class SimpleChatServer extends JFrame {
         });
  
         setVisible(true);
- 
+        startService();// 채팅 서버 시작
+        
         textField.requestFocus();
- 
+
     }
  
     public void startService() {
