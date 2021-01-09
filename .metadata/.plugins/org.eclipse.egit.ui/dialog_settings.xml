@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<item key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel" value="0"/>
 	<list key="RepositorySelectionPage.UsedUris">
 		<item value="https://github.com/WKMoon/TEAM_PcCafe.git"/>
+		<item value="https://github.com/WKMoon/TEAM_PcCafe"/>
 	</list>
 	<list key="EGit.KnownHosts">
 		<item value="bitbucket.org"/>
@@ -25,5 +27,8 @@
 			<item value="600"/>
 			<item value="400"/>
 		</list>
+	</section>
+	<section name="GitImportWizard">
+		<item key="GitProjectsImportPage.STORE_NESTED_PROJECTS" value="true"/>
 	</section>
 </section>

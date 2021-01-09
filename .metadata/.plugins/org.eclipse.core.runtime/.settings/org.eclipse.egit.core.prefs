@@ -1,3 +1,4 @@
-GitRepositoriesView.GitDirectories=C\:\\Users\\Song\\git\\repository\\.git;C\:\\Users\\Song\\git\\TEAM_PcCafe\\.git;C\:\\test\\hometudy\\.git;
-GitRepositoriesView.GitDirectories.relative=C\:\\Users\\Song\\git\\repository\\.git;C\:\\Users\\Song\\git\\TEAM_PcCafe\\.git;.git;
+GitRepositoriesView.GitDirectories=C\:\\Users\\Song\\git\\repository\\.git;C\:\\test\\hometudy\\TEAM_PcCafe\\.git;C\:\\test\\hometudy\\.git;
+GitRepositoriesView.GitDirectories.relative=C\:\\Users\\Song\\git\\repository\\.git;TEAM_PcCafe\\.git;.git;
+RepositoryGroups.uuids=
 eclipse.preferences.version=1

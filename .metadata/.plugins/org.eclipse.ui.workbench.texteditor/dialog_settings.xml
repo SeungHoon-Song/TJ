@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="read"/>
+		<item key="selection" value="나갔습니다"/>
 		<list key="findhistory">
-			<item value="read"/>
+			<item value="나갔습니다"/>
+			<item value="client"/>
+			<item value="Client"/>
+			<item value="if"/>
+			<item value="close"/>
+			<item value="tfName1"/>
+			<item value="socket"/>
 			<item value="while"/>
+			<item value="acc"/>
+			<item value="서버소켓이"/>
+			<item value="backimage"/>
+			<item value="read"/>
 			<item value="socket.close"/>
 			<item value="getInetAddress"/>
 			<item value="getInetADdress"/>
-			<item value="getLocal"/>
-			<item value="net"/>
-			<item value="sendMessage"/>
-			<item value="if (!text.equals(&quot;&quot;))"/>
-			<item value="if (!msg.equals(&quot;&quot;))"/>
-			<item value="ServerThread"/>
-			<item value="setvisible"/>
-			<item value="EXIT_ON_CLOSE"/>
-			<item value="addWindowListener"/>
-			<item value="message"/>
 		</list>
 		<list key="replacehistory">
 		</list>
