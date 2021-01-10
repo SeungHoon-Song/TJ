@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="나갔습니다"/>
+		<item key="selection" value="SER"/>
 		<list key="findhistory">
+			<item value="SER"/>
 			<item value="나갔습니다"/>
 			<item value="client"/>
 			<item value="Client"/>
@@ -22,7 +23,6 @@
 			<item value="read"/>
 			<item value="socket.close"/>
 			<item value="getInetAddress"/>
-			<item value="getInetADdress"/>
 		</list>
 		<list key="replacehistory">
 		</list>

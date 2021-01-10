@@ -121,7 +121,7 @@ public class ChatServer extends JFrame {
 				try { // 서버 소켓 생성 작업
 					serverSocket = new ServerSocket(1001);
 					socket = serverSocket.accept();// 클라이언트가 접속할때까지 커서(스레드)가 대기
-					textArea.append(id + "님과의 채팅.\n");
+					textArea.append(id + "님과의 채팅\n");
 
 					// 통신을 위한 스트림 생성
 					dis = new DataInputStream(socket.getInputStream());
@@ -148,7 +148,7 @@ public class ChatServer extends JFrame {
 		tfMsg.setText(""); // 입력 후 빈칸으로
 
 		if (!msg.equals(""))
-			textArea.append(" [SERVER] : " + msg + "\n");// 1.TextArea(채팅창)에 표시
+			textArea.append(" [관리자] : " + msg + "\n");// 1.TextArea(채팅창)에 표시
 
 		textArea.setCaretPosition(textArea.getText().length()); // 스크롤 따라가게
 

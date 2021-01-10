@@ -20,9 +20,8 @@ public class MainFrame extends JFrame {
 		setBounds(10, 50, 400, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(0, 2));
-		JButton btnServer = new JButton("Server");
-		JButton btnClient = new JButton("Client");
+		panel.setLayout(new GridLayout(0, 1));
+		JButton btnServer = new JButton("Connect");
 		TextField tftext = new TextField("테스트");
 		// 버튼클릭 액션에 반응하기 위해 리스너 객체 생성 및 추가
 
@@ -32,6 +31,7 @@ public class MainFrame extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				// ServerFrame 객체 생성
 				ChatServer frame = new ChatServer();
+				ChatClient frame2 = new ChatClient();
 
 			}
 
@@ -46,19 +46,10 @@ public class MainFrame extends JFrame {
 			}
 		});
 
-		btnClient.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// ClientFrame 객체 생성
-				ChatClient frame = new ChatClient();
-
-			}
-
-		});
+		
 
 		panel.add(btnServer);
-		panel.add(btnClient);
+
 		tftext.setBounds(170, 164, 50, 20);
 		add(tftext);
 		add(panel, BorderLayout.CENTER);

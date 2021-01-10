@@ -124,7 +124,7 @@ public class ChatClient extends JFrame {
 
 					while (true) {// 상대방 메시지 받기
 						String msg = dis.readUTF();
-						textArea.append(" [SERVER] : " + msg + "\n");
+						textArea.append(" [관리자] : " + msg + "\n");
 						textArea.setCaretPosition(textArea.getText().length());
 					}
 				} catch (UnknownHostException e) {
