@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="SER"/>
+		<item key="selection" value="TextField"/>
 		<list key="findhistory">
+			<item value="TextField"/>
+			<item value="EXIT"/>
+			<item value="scene"/>
+			<item value="main"/>
+			<item value="args"/>
+			<item value="id"/>
+			<item value="md."/>
+			<item value="Member"/>
+			<item value="DAO"/>
+			<item value="select"/>
+			<item value="관리자"/>
+			<item value="start"/>
+			<item value="pc"/>
 			<item value="SER"/>
 			<item value="나갔습니다"/>
-			<item value="client"/>
-			<item value="Client"/>
-			<item value="if"/>
-			<item value="close"/>
-			<item value="tfName1"/>
-			<item value="socket"/>
-			<item value="while"/>
-			<item value="acc"/>
-			<item value="서버소켓이"/>
-			<item value="backimage"/>
-			<item value="read"/>
-			<item value="socket.close"/>
-			<item value="getInetAddress"/>
 		</list>
 		<list key="replacehistory">
 		</list>

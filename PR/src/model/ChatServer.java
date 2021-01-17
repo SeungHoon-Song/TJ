@@ -1,5 +1,4 @@
 package model;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,7 +23,7 @@ public class ChatServer extends JFrame {
 	JTextArea textArea; // 멤버 참조변수
 	JTextField tfMsg;
 	JButton btnSend;
-
+	
 	ServerSocket serverSocket;
 	Socket socket;
 	DataInputStream dis;
@@ -117,7 +116,7 @@ public class ChatServer extends JFrame {
 
 		@Override
 		public void run() {
-			if (id != null) {
+			if (id != null && id!="") {
 				try { // 서버 소켓 생성 작업
 					serverSocket = new ServerSocket(1001);
 					socket = serverSocket.accept();// 클라이언트가 접속할때까지 커서(스레드)가 대기
@@ -146,7 +145,7 @@ public class ChatServer extends JFrame {
 	void sendMessage() {
 		String msg = tfMsg.getText(); // TextField에 써있는 글씨를 얻어오기
 		tfMsg.setText(""); // 입력 후 빈칸으로
-
+		if (id != null && id!="")
 		if (!msg.equals(""))
 			textArea.append(" [관리자] : " + msg + "\n");// 1.TextArea(채팅창)에 표시
 

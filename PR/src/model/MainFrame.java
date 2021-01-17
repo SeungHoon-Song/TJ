@@ -8,10 +8,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 
+import javafx.application.Application;
+import javafx.scene.Scene;
+
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import javafx.stage.Stage;
 
 public class MainFrame extends JFrame {
 
@@ -29,23 +34,13 @@ public class MainFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// ServerFrame 객체 생성
-				ChatServer frame = new ChatServer();
-				ChatClient frame2 = new ChatClient();
-
-			}
-
-		});
-		tftext.addMouseListener(new MouseAdapter() {
-			
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				ChatServer.id=tftext.getText();
-				ChatClient.id=tftext.getText();
+				UserList ct = new UserList();
 				
-			}
-		});
 
+			}
+
+		});
+		
 		
 
 		panel.add(btnServer);
@@ -57,9 +52,11 @@ public class MainFrame extends JFrame {
 
 	}
 
-	public static void main(String[] args) {
-		new MainFrame();
-
+	   public static void main(String[] args) {
+	    	new MainFrame();
+	    	
+	        Application.launch(ChatList.class, args);
 	}
+
 
 }

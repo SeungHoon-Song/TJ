@@ -11,6 +11,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\test\PcCafe"/>
+			<item value="C:\test\TeamProjectPcCafe2"/>
+			<item value="C:\test\TeamProjectPcCafe.zip"/>
 			<item value="C:\Users\Song\git\TEAM_PcCafe"/>
 		</list>
 	</section>
